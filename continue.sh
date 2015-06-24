@@ -12,7 +12,10 @@ do
         git svn clone --no-minimize-url -r HEAD "$repourl"
             cd ro
             git remote add origin https://github.com/jobava-mozilla/mirror-"$reponame".git
-            git push -u --force origin master
+            git checkout master
+            git fetch origin master
+            git rebase -i origin master
+            git push origin master
             cd ..
         cd ..
     fi
